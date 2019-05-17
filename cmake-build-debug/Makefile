@@ -39,10 +39,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /snap/clion/69/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /snap/clion/70/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /snap/clion/69/bin/cmake/linux/bin/cmake -E remove -f
+RM = /snap/clion/70/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /home/alejandro/Documents/Workspace/solver-Mandarine2312/cmak
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/snap/clion/69/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/snap/clion/70/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/snap/clion/69/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/snap/clion/70/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -150,6 +150,33 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/solver-Mandarine2312.dir/build.make CMakeFiles/solver-Mandarine2312.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+operations/creator.o: operations/creator.cpp.o
+
+.PHONY : operations/creator.o
+
+# target to build an object file
+operations/creator.cpp.o:
+	$(MAKE) -f CMakeFiles/solver-Mandarine2312.dir/build.make CMakeFiles/solver-Mandarine2312.dir/operations/creator.cpp.o
+.PHONY : operations/creator.cpp.o
+
+operations/creator.i: operations/creator.cpp.i
+
+.PHONY : operations/creator.i
+
+# target to preprocess a source file
+operations/creator.cpp.i:
+	$(MAKE) -f CMakeFiles/solver-Mandarine2312.dir/build.make CMakeFiles/solver-Mandarine2312.dir/operations/creator.cpp.i
+.PHONY : operations/creator.cpp.i
+
+operations/creator.s: operations/creator.cpp.s
+
+.PHONY : operations/creator.s
+
+# target to generate assembly for a file
+operations/creator.cpp.s:
+	$(MAKE) -f CMakeFiles/solver-Mandarine2312.dir/build.make CMakeFiles/solver-Mandarine2312.dir/operations/creator.cpp.s
+.PHONY : operations/creator.cpp.s
+
 operations/operation.o: operations/operation.cpp.o
 
 .PHONY : operations/operation.o
@@ -216,6 +243,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... operations/creator.o"
+	@echo "... operations/creator.i"
+	@echo "... operations/creator.s"
 	@echo "... operations/operation.o"
 	@echo "... operations/operation.i"
 	@echo "... operations/operation.s"

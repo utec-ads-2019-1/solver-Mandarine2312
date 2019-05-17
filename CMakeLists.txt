@@ -3,4 +3,4 @@ project(solver-Mandarine2312)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(solver-Mandarine2312 main.cpp tester/tester.cpp operations/operation.cpp)
+add_executable(solver-Mandarine2312 main.cpp tester/tester.cpp operations/operation.cpp operations/creator.cpp)

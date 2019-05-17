@@ -7,6 +7,7 @@
 #include <string.h>
 
 #include "../operations/operation.h"
+#include "../operations/creator.h"
 
 using namespace std;
 
