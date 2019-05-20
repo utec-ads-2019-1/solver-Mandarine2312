@@ -5,90 +5,78 @@
 #include "creator.h"
 
 Operation* Creator::buildFromEquation(string equation) {
-    if(equation == ""){
-        return new Number(0);
-    }
 
-    equation = stripExtraParenthesis(equation);
+    if(skipParentesis(equation, 0) >= equation.size()-1) equation = stripExtraParenthesis(equation);
 
-    int openParenthesis = 0;
-    bool isFirstOpen = true;
-    int it = 0;
+    //auto findPlus = [](string equation, int in) {return (equation[in] == '+');};
+    auto findMinus = [](string equation, int in){return (equation[in] == '-') and (equation[in - 1] != '/' and equation[in - 1] != '*');};
+    auto findMult = [](string equation, int in) { return equation[in] == '*'; };
+    auto findDiv = [](string equation, int in) { return equation[in] == '/'; };
+    auto findPotency = [](string equation, int in) { return equation[in] == '^'; };
 
-    while(it < equation.size() ){
-        if(equation[it] == '('){
-            openParenthesis++;
-            isFirstOpen = false;
-        }else if(equation[it] == ')'){
-            openParenthesis--;
-        }
-        if((openParenthesis == 0) & !isFirstOpen) break;
-        it++;
-    }
+//    if(it >= equation.size() - 1) { //no hay paréntesis que se deben hacer antes
+    //int in = findInEquation(equation, findPlus);
 
+    int in1 = findPlus(equation);
+    if (in1 != equation.size()) {
+        showBackshow(equation, in1);
 
-    auto findPlusMinus = [](string equation, int in){return (equation[in] == '+' or equation[in] == '-') and (equation[in - 1] != '/' and equation[in - 1] != '*');};
-    auto findMultDiv = [](string equation, int in){return equation[in] == '*' or equation[in] == '/';};
-    auto findPotency = [](string equation, int in){return equation[in] == '^';};
+            auto thisOp = new Addition();
+            thisOp->setLeft(buildFromEquation(equation.substr(0, in1))); //lo que se pasa a las izquierda
+            thisOp->setRight(buildFromEquation(equation.substr(in1 + 1, equation.size()))); //lo que se pasa a la derecha
+            return thisOp;
 
-    if(it >= equation.size() - 1) { //no hay paréntesis que se deben hacer antes
-        int in = findInEquation(equation, findPlusMinus);
-        if (in != equation.size()) {
-            //showBackshow(equation, in);
+    } else {
+        int in2 = findInEquation(equation, findMinus);
+        if (in2 != equation.size()) {
+            showBackshow(equation, in2);
 
-            if(equation[in] == '+'){
-                auto thisOp = new Addition();
-                thisOp->setLeft(buildFromEquation(equation.substr(0, in))); //lo que se pasa a las izquierda
-                thisOp->setRight(buildFromEquation(equation.substr(in+1, equation.size()))); //lo que se pasa a la derecha
-                return thisOp;
-            }else{
-                auto thisOp = new Substraction();
-                thisOp->setLeft(buildFromEquation(equation.substr(0, in))); //lo que se pasa a las izquierda
-                thisOp->setRight(buildFromEquation(equation.substr(in+1, equation.size()))); //lo que se pasa a la derecha
-                return thisOp;
-            }
+            auto thisOp = new Substraction();
+            thisOp->setLeft(buildFromEquation(equation.substr(0, in2))); //lo que se pasa a las izquierda
+            thisOp->setRight(buildFromEquation(equation.substr(in2 + 1, equation.size()))); //lo que se pasa a la derecha
+            return thisOp;
 
         } else {
-            in = findInEquation(equation, findMultDiv);
+            int in = findInEquation(equation, findMult);
             if (in != equation.size()) {
-                //showBackshow(equation, in);
+                showBackshow(equation, in);
 
-                if(equation[in] == '*'){
-                    auto thisOp = new Multiplication();
-                    thisOp->setLeft(buildFromEquation(equation.substr(0, in))); //lo que se pasa a las izquierda
-                    thisOp->setRight(buildFromEquation(equation.substr(in+1, equation.size()))); //lo que se pasa a la derecha
-                    return thisOp;
-                }else{
+                auto thisOp = new Multiplication();
+                thisOp->setLeft(buildFromEquation(equation.substr(0, in))); //lo que se pasa a las izquierda
+                thisOp->setRight(
+                        buildFromEquation(equation.substr(in + 1, equation.size()))); //lo que se pasa a la derecha
+                return thisOp;
+
+            } else {
+                in = findInEquation(equation, findDiv);
+                if (in != equation.size()) {
+                    showBackshow(equation, in);
+
                     auto thisOp = new Division();
                     thisOp->setLeft(buildFromEquation(equation.substr(0, in))); //lo que se pasa a las izquierda
-                    thisOp->setRight(buildFromEquation(equation.substr(in+1, equation.size()))); //lo que se pasa a la derecha
-                    return thisOp;
-                }
-
-            }else{
-                in = findInEquation(equation, findPotency);
-                if (in != equation.size()) {
-                    //showBackshow(equation, in);
-
-                    auto thisOp = new Power();
-                    thisOp->setLeft(buildFromEquation(equation.substr(0, in))); //lo que se pasa a las izquierda
-                    thisOp->setRight(buildFromEquation(equation.substr(in+1, equation.size()))); //lo que se pasa a la derecha
+                    thisOp->setRight(
+                            buildFromEquation(equation.substr(in + 1, equation.size()))); //lo que se pasa a la derecha
                     return thisOp;
 
-                }else{
-                    auto newNumber = new Number(atof(equation.c_str()));
-                    return newNumber;
+                } else {
+                    in = findInEquation(equation, findPotency);
+                    if (in != equation.size()) {
+                        showBackshow(equation, in);
+
+                        auto thisOp = new Power();
+                        thisOp->setLeft(buildFromEquation(equation.substr(0, in))); //lo que se pasa a las izquierda
+                        thisOp->setRight(
+                                buildFromEquation(
+                                        equation.substr(in + 1, equation.size()))); //lo que se pasa a la derecha
+                        return thisOp;
+
+                    } else {
+                        auto newNumber = new Number(atof(equation.c_str()));
+                        return newNumber;
+                    }
                 }
             }
         }
-    }else{
-       // std::cout << "Debería cortar en la posición: " << equation.substr(it-1, it+2) << std::endl;
-        /*std::cout << "Se pasaría a la izquierda: " << equation.substr(0, it+1);
-        std::cout << "\nSe usaría para este Operation: " << equation[it+1];
-        std::cout << "\nSe pasaría a la derecha: " << equation.substr(it+2, equation.size()) << endl;*/
-
-        buildFromEquation(equation.substr(0, it+1)); //lo que se pasa a las izquierda
-        buildFromEquation(equation.substr(it+2, equation.size())); //lo que se pasa a la derecha
     }
 }
 
@@ -110,7 +98,9 @@ string Creator::stripExtraParenthesis(string equation) {
 int Creator::findInEquation(string equation, function<bool (string, int)>condition) {
     int in = 0;
     while (in < equation.size()) {
-        if (condition(equation, in)) {
+        if(equation[in] == '('){
+            in = skipParentesis(equation, in);
+        }else if (condition(equation, in)) {
             return in;
         }
         in++;
@@ -118,9 +108,44 @@ int Creator::findInEquation(string equation, function<bool (string, int)>conditi
     return equation.size();
 }
 
+int Creator::findPlus(string equation) {
+    int in = 0;
+    while (in < equation.size()) {
+        if (equation[in] == '+') {
+            return in;
+        }else if(equation[in] == '('){
+            in = skipParentesis(equation, in);
+        }
+        in++;
+    }
+    return equation.size();
+}
+
+
+
 string Creator::showBackshow(string equation, int in) {
+    std::cout << "----------------------------------------" << endl;
     std::cout << "Debería cortarse en: " << equation[in] << std::endl;
     std::cout << "Se pasaría a la izquierda: " << equation.substr(0, in);
     std::cout << "\nSe usaría para este nodo: " << equation[in];
     std::cout << "\nSe pasaría a la derecha: " << equation.substr(in + 1, equation.size()) << endl;
+}
+
+int Creator::skipParentesis(string equation, int it) {
+    int parYetToClose = 0;
+    while(it < equation.size() ){
+        if(equation[it] == '('){
+            parYetToClose++;
+        }else if(equation[it] == ')'){
+            parYetToClose--;
+        }
+        if(parYetToClose == 0){
+            cout << "El it bota " << it <<  endl;
+            return it;
+        }
+        it++;
+    }
+    cout << "El it bota " << it <<  endl;
+    return it;
+
 }

@@ -23,7 +23,13 @@ public:
 
     static int findInEquation(string equation, function<bool (string, int)>condition);
 
+    static int findPlus(string equation);
+
     static string showBackshow(string equation, int it);
+
+    static int skipParentesis(string equation, int it);
+
+    static bool reduceSigns();
 };
 
 

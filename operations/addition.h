@@ -12,6 +12,8 @@ public:
     Addition(): Operation() {};
 
     float operate(){
+
+        auto respuesta = left->operate() + right->operate();
         return left->operate() + right->operate();
     }
 };
