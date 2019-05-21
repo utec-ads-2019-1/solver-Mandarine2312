@@ -11,7 +11,7 @@ class Substraction : public Operation {
 public:
     Substraction(): Operation() {};
 
-    float operate(){
+    float operate() override {
         auto respuesta = left->operate()-right->operate();
 
         return left->operate() - right->operate();

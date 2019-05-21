@@ -11,7 +11,7 @@ class Multiplication : public Operation {
 public:
     Multiplication(): Operation() {};
 
-    float operate(){
+    float operate() override {
         return left->operate() * right->operate();
     }
 };

@@ -13,6 +13,7 @@
 #include "multiplication.h"
 #include "division.h"
 #include "power.h"
+#include "variable.h"
 
 class Creator {
 public:
@@ -22,8 +23,6 @@ public:
     static string stripExtraParenthesis(string equation);
 
     static int findInEquation(string equation, function<bool (string, int)>condition);
-
-    //static int findPlus(string equation, int begin);
 
     static string showBackshow(string equation, int it);
 

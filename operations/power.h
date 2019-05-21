@@ -12,7 +12,7 @@ class Power : public Operation {
 public:
     Power(): Operation() {};
 
-    float operate(){
+    float operate() override {
         return pow(left->operate(), right->operate());
     }
 };

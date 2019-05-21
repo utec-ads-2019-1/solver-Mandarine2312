@@ -15,6 +15,8 @@ class Operation {
 
     Operation(): left(nullptr), right(nullptr) {};
 
+    Operation(string equation): left(nullptr), right(nullptr), equation(equation) {};
+
 
 public:
         inline string name() { return equation; }

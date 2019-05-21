@@ -11,7 +11,7 @@ class Addition : public Operation {
 public:
     Addition(): Operation() {};
 
-    float operate(){
+    float operate() override {
 
         auto respuesta = left->operate() + right->operate();
         return left->operate() + right->operate();

@@ -14,9 +14,7 @@ private:
 public:
     Number(float value): value(value), Operation() {};
 
-    float operate(){
-        return value;
-    }
+    inline float operate() override { return value;}
 };
 
 
