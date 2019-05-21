@@ -15,6 +15,12 @@ public:
     float operate() override {
         return pow(left->operate(), right->operate());
     }
+
+    void fillVariables(map<string, float>*storedValues) override {
+        if(left) left->fillVariables(storedValues);
+        if(right) right->fillVariables(storedValues);
+    }
+
 };
 
 

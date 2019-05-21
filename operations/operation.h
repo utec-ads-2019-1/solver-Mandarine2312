@@ -4,6 +4,7 @@
 #include <string>
 #include <iostream>
 #include <functional>
+#include <map>
 
 using namespace std;
 
@@ -27,6 +28,7 @@ public:
 
         inline void setRight(Operation * op) {right = op;};
 
+        virtual void fillVariables(map<string, float>*storedValues) = 0;
 };
 
 #endif

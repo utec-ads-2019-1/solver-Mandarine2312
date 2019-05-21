@@ -93,12 +93,6 @@
 		<Unit filename="/home/alejandro/Documents/Workspace/solver-Mandarine2312/operations/creator.h">
 			<Option target="solver-Mandarine2312"/>
 		</Unit>
-		<Unit filename="/home/alejandro/Documents/Workspace/solver-Mandarine2312/operations/operation.cpp">
-			<Option target="solver-Mandarine2312"/>
-		</Unit>
-		<Unit filename="/home/alejandro/Documents/Workspace/solver-Mandarine2312/operations/operation.h">
-			<Option target="solver-Mandarine2312"/>
-		</Unit>
 		<Unit filename="/home/alejandro/Documents/Workspace/solver-Mandarine2312/tester/tester.cpp">
 			<Option target="solver-Mandarine2312"/>
 		</Unit>

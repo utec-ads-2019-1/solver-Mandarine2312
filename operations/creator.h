@@ -29,6 +29,8 @@ public:
     static int skipParentesis(string equation, int it);
 
     static int reduceSigns(string equation, int &in, bool &end);
+
+    static bool isNumber(string& s);
 };
 
 

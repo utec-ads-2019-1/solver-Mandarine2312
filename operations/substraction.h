@@ -13,8 +13,12 @@ public:
 
     float operate() override {
         auto respuesta = left->operate()-right->operate();
-
         return left->operate() - right->operate();
+    }
+
+    void fillVariables(map<string, float>*storedValues) override {
+        if(left) left->fillVariables(storedValues);
+        if(right) right->fillVariables(storedValues);
     }
 };
 

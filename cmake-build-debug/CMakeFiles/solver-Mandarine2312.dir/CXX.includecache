@@ -6,9 +6,19 @@
 
 #IncludeRegexTransform: 
 
+/home/alejandro/Documents/Workspace/solver-Mandarine2312/main.cpp
+iostream
+-
+tester/tester.h
+/home/alejandro/Documents/Workspace/solver-Mandarine2312/tester/tester.h
+
 /home/alejandro/Documents/Workspace/solver-Mandarine2312/operations/addition.h
 operation.h
 /home/alejandro/Documents/Workspace/solver-Mandarine2312/operations/operation.h
+
+/home/alejandro/Documents/Workspace/solver-Mandarine2312/operations/creator.cpp
+creator.h
+/home/alejandro/Documents/Workspace/solver-Mandarine2312/operations/creator.h
 
 /home/alejandro/Documents/Workspace/solver-Mandarine2312/operations/creator.h
 operation.h
@@ -25,6 +35,8 @@ division.h
 /home/alejandro/Documents/Workspace/solver-Mandarine2312/operations/division.h
 power.h
 /home/alejandro/Documents/Workspace/solver-Mandarine2312/operations/power.h
+variable.h
+/home/alejandro/Documents/Workspace/solver-Mandarine2312/operations/variable.h
 
 /home/alejandro/Documents/Workspace/solver-Mandarine2312/operations/division.h
 operation.h
@@ -45,6 +57,8 @@ iostream
 -
 functional
 -
+map
+-
 
 /home/alejandro/Documents/Workspace/solver-Mandarine2312/operations/power.h
 operation.h
@@ -53,6 +67,10 @@ cmath
 -
 
 /home/alejandro/Documents/Workspace/solver-Mandarine2312/operations/substraction.h
+operation.h
+/home/alejandro/Documents/Workspace/solver-Mandarine2312/operations/operation.h
+
+/home/alejandro/Documents/Workspace/solver-Mandarine2312/operations/variable.h
 operation.h
 /home/alejandro/Documents/Workspace/solver-Mandarine2312/operations/operation.h
 

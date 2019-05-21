@@ -73,8 +73,14 @@ Operation* Creator::buildFromEquation(string equation) {
                         return thisOp;
 
                     } else {
-                        auto newNumber = new Number(atof(equation.c_str()));
-                        return newNumber;
+                        if(isNumber(equation)){
+                            auto newNumber = new Number(atof(equation.c_str()));
+                            return newNumber;
+                        }else{
+                            auto newVariable = new Variable(equation);
+                            return newVariable;
+                        }
+
                     }
                 }
             }
@@ -159,3 +165,11 @@ int Creator::reduceSigns(string equation, int &in, bool &end){
     }
     return leftBegin;
 }
+
+bool Creator::isNumber(string& s){
+    for(int i = 0; i < s.size(); i++){
+        if(!isdigit(s[i])) return false;
+    }
+    return true;
+}
+
