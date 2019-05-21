@@ -15,7 +15,9 @@ private:
 public:
     Variable(string equation): Operation(equation), value(nullptr) {};
 
-    inline void receiveValue (float valor) {this->value = new float; (*value) = valor; };
+    inline void receiveValue (float valor) {
+        this->value = new float;
+        (*value) = valor; };
 
     float operate() override {
         if(value){ //funcionará esto????
@@ -35,7 +37,7 @@ public:
             if(left) left->fillVariables(storedValues);
             if(right) right->fillVariables(storedValues);
         }else{
-            this->receiveValue((*storedValues)["equation"]);
+            this->receiveValue((*storedValues)[equation]);
             if(left) left->fillVariables(storedValues);
             if(right) right->fillVariables(storedValues);
         }
