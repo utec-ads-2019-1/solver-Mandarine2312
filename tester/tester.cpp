@@ -11,7 +11,8 @@ void Tester::execute() {
         "19+-+++-++++++9",
         "((7*3)/4+6*(3^2)/2)*(-1)",
         "(5+-3)+(21/3*5)-(5^3-2)",
-        "((19--45/16*100-(181^2-15*10)))"
+        "((19--45/16*100-(181^2-15*10)))",
+        "a+13"  //a debe tener valor 3
     };
 
     float results[] = {
@@ -24,16 +25,23 @@ void Tester::execute() {
         28,
         -32.25,
         -86,
-        -32310.75
+        -32310.75,
+        16
     };
+
+    //string sNumber = "12";
+    //string sNotNumber = "abc";
+
+    //if(Creator::isNumber(sNumber)) cout << "Bien 1 " << endl;
+    //if(!Creator::isNumber(sNotNumber)) cout << "Bien 2" << endl;
 
     const unsigned int size = sizeof(equations) / sizeof(string);
     for (int i = 0; i < size; ++i) {
         Operation* root = Creator::buildFromEquation(equations[i]);
+        root->fillVariables(new map<string, float>);
         float respuesta = root->operate();
-        cout << "Respuesta: " << respuesta << endl;
+        //cout << "Respuesta: " << respuesta << endl;
         ASSERT(respuesta == results[i], "The solver is not working");
-        //if(respuesta != results[i]) cout << "No funciona la ecuación # " << i+1 << endl;
         cout << "Equation(" << i + 1 << ") solved" << endl;
     }
 }

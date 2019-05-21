@@ -14,8 +14,11 @@ private:
 public:
     Number(float value): value(value), Operation() {};
 
-    float operate(){
-        return value;
+    inline float operate() override { return value;}
+
+    void fillVariables(map<string, float>*storedValues) override{
+        if(left) left->fillVariables(storedValues);
+        if(right) right->fillVariables(storedValues);
     }
 };
 
