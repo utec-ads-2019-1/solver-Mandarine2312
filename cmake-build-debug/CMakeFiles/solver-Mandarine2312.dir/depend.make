@@ -17,6 +17,7 @@ CMakeFiles/solver-Mandarine2312.dir/operations/creator.cpp.o: ../operations/addi
 CMakeFiles/solver-Mandarine2312.dir/operations/creator.cpp.o: ../operations/creator.cpp
 CMakeFiles/solver-Mandarine2312.dir/operations/creator.cpp.o: ../operations/creator.h
 CMakeFiles/solver-Mandarine2312.dir/operations/creator.cpp.o: ../operations/division.h
+CMakeFiles/solver-Mandarine2312.dir/operations/creator.cpp.o: ../operations/globals.h
 CMakeFiles/solver-Mandarine2312.dir/operations/creator.cpp.o: ../operations/multiplication.h
 CMakeFiles/solver-Mandarine2312.dir/operations/creator.cpp.o: ../operations/number.h
 CMakeFiles/solver-Mandarine2312.dir/operations/creator.cpp.o: ../operations/operation.h
