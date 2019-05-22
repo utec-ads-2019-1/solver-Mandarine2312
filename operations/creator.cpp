@@ -3,17 +3,12 @@
 //
 
 #include "creator.h"
+#include "globals.h"
+
 
 Operation* Creator::buildFromEquation(string equation) {
 
     if(skipParentesis(equation, 0) >= equation.size()-1) equation = stripExtraParenthesis(equation);
-
-    //convertir a static???? o global, para no definir cada vez
-    auto findPlus = [](string equation, int in) {return (equation[in] == '+');};
-    auto findMinus = [](string equation, int in){return (equation[in] == '-') and (equation[in - 1] != '/' and equation[in - 1] != '*');};
-    auto findMult = [](string equation, int in) { return equation[in] == '*'; };
-    auto findDiv = [](string equation, int in) { return equation[in] == '/'; };
-    auto findPotency = [](string equation, int in) { return equation[in] == '^'; };
 
     int in = findInEquation(equation, findPlus);
     if (in != equation.size()) {

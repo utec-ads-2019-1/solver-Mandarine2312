@@ -10,6 +10,12 @@
 operation.h
 /home/alejandro/Documents/Workspace/solver-Mandarine2312/operations/operation.h
 
+/home/alejandro/Documents/Workspace/solver-Mandarine2312/operations/creator.cpp
+creator.h
+/home/alejandro/Documents/Workspace/solver-Mandarine2312/operations/creator.h
+globals.h
+/home/alejandro/Documents/Workspace/solver-Mandarine2312/operations/globals.h
+
 /home/alejandro/Documents/Workspace/solver-Mandarine2312/operations/creator.h
 operation.h
 /home/alejandro/Documents/Workspace/solver-Mandarine2312/operations/operation.h
@@ -31,6 +37,8 @@ variable.h
 /home/alejandro/Documents/Workspace/solver-Mandarine2312/operations/division.h
 operation.h
 /home/alejandro/Documents/Workspace/solver-Mandarine2312/operations/operation.h
+
+/home/alejandro/Documents/Workspace/solver-Mandarine2312/operations/globals.h
 
 /home/alejandro/Documents/Workspace/solver-Mandarine2312/operations/multiplication.h
 operation.h
@@ -63,22 +71,4 @@ operation.h
 /home/alejandro/Documents/Workspace/solver-Mandarine2312/operations/variable.h
 operation.h
 /home/alejandro/Documents/Workspace/solver-Mandarine2312/operations/operation.h
-
-/home/alejandro/Documents/Workspace/solver-Mandarine2312/tester/tester.cpp
-tester.h
-/home/alejandro/Documents/Workspace/solver-Mandarine2312/tester/tester.h
-
-/home/alejandro/Documents/Workspace/solver-Mandarine2312/tester/tester.h
-stdexcept
--
-iostream
--
-assert.h
--
-string.h
--
-../operations/operation.h
-/home/alejandro/Documents/Workspace/solver-Mandarine2312/operations/operation.h
-../operations/creator.h
-/home/alejandro/Documents/Workspace/solver-Mandarine2312/operations/creator.h
 
